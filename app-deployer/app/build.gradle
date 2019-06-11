@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.github.triplet.play'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        applicationId "au.com.auspost.app"
+        minSdkVersion 28
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+play {
+    track = 'internal'
+    serviceAccountEmail = project.ext.serviceAccount
+    serviceAccountCredentials = file('../cert/<YOUR_CERTIFICATE>.p12')
+    artifactDir = file("apk")
+   	resolutionStrategy = "ignore"
+}

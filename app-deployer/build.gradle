@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+  		maven { url 'https://plugins.gradle.org/m2' }
+    	maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'https://maven.google.com'}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.github.triplet.gradle:play-publisher:2.2.1'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+
+    ext {
+        serviceAccount = project.hasProperty('serviceAccount') ? project.property('serviceAccount') : ''
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
